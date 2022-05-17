@@ -3,7 +3,7 @@ const beers = {
 	logo: "Best Beers",
 	button: "details",
 	cards: [
-		{
+		{	
 			title: "Mango Bay",
 			sub: "Mad Scientist Beer",
 			text: "Pale Ale - American"

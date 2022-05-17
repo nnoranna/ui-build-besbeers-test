@@ -30,23 +30,223 @@
     appearance: none !important;
     border-radius: 0;
   }
+/*-----------------------------------------------------------------------------------------*/
 
-body{
-    background-color: #ffeedf;
+/*-----------------------------------------------------------------------------------------
+COLOURS
+-----------------------------------------------------------------------------------------*/
+:root {
+    --light: #ffeedf;
+    --dark: #145434;
 }
+
+body {
+    background-color: var(--light);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/*-----------------------------------------------------------------------------------------
+HEADER
+-----------------------------------------------------------------------------------------*/
 .header {
     width: 100%;
     height: 60px;
+    z-index: 99;
     position: fixed;
+    padding: 0 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid #145434;
+    background-color: var(--light);
+    border-bottom: 1px solid var(--dark);
     align-items: center;
-    color: #145434;
-    font-family: 'Space Grotesk';
+    color: var(--dark);
+}
+
+.header h1 {
     font-size: 36px;
 }
+
+/*-----------------------------------------------------------------------------------------
+APPLIES TO BOTH HAMBURGER MENU AND ARROW ICON
+-----------------------------------------------------------------------------------------*/
+.material-icons {
+    color: var(--dark);
+    font-size: 36px;
+}
+
+/*-----------------------------------------------------------------------------------------
+MAIN CONTAINER
+-----------------------------------------------------------------------------------------*/
+.main-cont {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*-----------------------------------------------------------------------------------------
+CONTAINER OF THE BEERCARDS
+-----------------------------------------------------------------------------------------*/
+
+.cards-container {
+    position: absolute;
+    top: 100px;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px 60px;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin: 0 auto;
+    }
+    /*DOESN'T WORK
+    .beercard {
+        width: 100%;
+        height: 240px;
+        margin: 0 auto;
+    }*/
+}
+
+/*-----------------------------------------------------------------------------------------
+MAIN COMPONENT: BEERCARD INCLUDING NUMBER, MAIN CARD & BUTTON
+-----------------------------------------------------------------------------------------*/
+.beer-container {
+
+}
+
+/*-----------------------------------------------------------------------------------------
+COMPONENT: BEERCARD incl. title, sub, text
+-----------------------------------------------------------------------------------------*/
+.beercard {
+    z-index: 0;
+    width: 400px;
+    height: 240px;
+    padding: 32px;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+@media (max-width: 480px) {
+    .beercard {
+        width: 100%;
+        height: 240px;
+        margin: 0 auto;
+    }
+}
+
+/*Title*/
+.beercard h2 {
+    font-size: 36px;
+    font-weight: 400;
+    padding-bottom: 32px;
+    inline-size: 350px; /*set the max. width of the title*/
+    overflow: hidden; /*hide the text that exceeds the max-width*/
+    white-space: nowrap; /*no wrapping to 2 or more lines*/
+    text-overflow: ellipsis;
+}
+
+.beercard h2:hover {
+    /*transform: scale(0.75); /*decrease the size to fit in*/
+    overflow: visible; /*show the whole tex*/
+    animation: 2.5s slide-left;
+}
+
+
+@keyframes slide-left {
+    from {
+      margin-left: 0;
+    }
+  
+    to {
+      margin-left: -100px;
+    }
+  }
+
+.line {
+    width: 100%;
+    border-bottom: 1.5px solid var(--light);
+}
+
+/*Sub*/
+.beercard h5 {
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 10px;
+}
+
+/*Text*/
+.beercard h6 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/*-----------------------------------------------------------------------------------------
+COMPONENT: NUMBER ON CARD
+-----------------------------------------------------------------------------------------*/
+.circle {
+    position: relative;
+    top: 20px;
+    left: -20px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+    background-color: var(--light);
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid var(--dark);
+    font-size: 24px;
+    color: var(--dark);
+}
+
+/*-----------------------------------------------------------------------------------------
+COMPONENT: BUTTON ON CARD
+-----------------------------------------------------------------------------------------*/
+.details {
+    position: relative;
+    bottom: 40px;
+    right: -220px;
+    width: 200px;
+    height: 50px;
+    background-color: var(--light);
+    border: 2px solid var(--dark);
+    color: var(--dark);
+}
+
+.details:hover {
+    background-color: var(--dark);
+    border: 2px solid var(--light);
+    color: var(--light); /*doesn't work with the arrow icon; WHY?*/
+}
+
+.details .btn-text {
+    position: relative;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.details .arrow-icon {
+    position: absolute;
+    right: 3px;
+    bottom: 4px;
+}
+
+
 
 /*margin-auto a cardra*/
 /*flex basis a konténerre*/
